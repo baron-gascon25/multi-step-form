@@ -1,38 +1,162 @@
-.App {
+@font-face {
+  font-family: "Ubuntu-Regular";
+  src: url("./fonts/Ubuntu-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Ubuntu-Medium";
+  src: url("./fonts/Ubuntu-Medium.ttf");
+}
+@font-face {
+  font-family: "Ubuntu-Bold";
+  src: url("./fonts/Ubuntu-Bold.ttf");
+}
+
+html {
+  background-color: hsl(217, 100%, 97%);
+}
+
+.attribution {
+  font-size: 11px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.attribution a {
+  color: hsl(228, 45%, 44%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.center-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.m-1 {
+  margin: 1rem;
+}
+
+.m-2 {
+  margin: 2rem;
+}
+
+.mb-0 {
+  margin-bottom: 0rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mt-0 {
+  margin-top: 0rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mt-3 {
+  margin-top: 3rem;
+}
+
+.mx-1 {
+  margin-left: 1rem;
+}
+
+.mx-2 {
+  margin-left: 2rem;
+}
+
+.mx-3 {
+  margin-left: 3rem;
+}
+
+.mx-4 {
+  margin-left: 4rem;
+}
+
+.row-1 {
+  flex: 1 auto;
+}
+
+.row-2 {
+  flex: 2 1;
+}
+
+.row-3 {
+  flex: 3 2;
+}
+
+.d-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.d-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.d-sidebar {
+  background-image: url("./images/bg-sidebar-desktop.svg");
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+
+h1 {
+  font-family: "Ubuntu-Bold";
+  font-weight: 700;
+  color: hsl(213, 96%, 18%);
+}
+
+h6 {
+  font-family: "Ubuntu-Medium";
+  font-size: 16px;
+  font-weight: 500;
+  color: hsl(0, 0%, 100%);
+}
+
+p {
+  font-family: "Ubuntu-Regular";
+  font-weight: 400;
+  color: hsl(231, 11%, 63%);
+}
+
+.circle {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 0.25rem;
+  border: 1px solid hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 100%);
+  text-align: center;
+}
+
+.container {
+  width: 60%;
+  height: 600px;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 10px;
+  box-shadow: 0 7px 7px -1px rgba(0, 0, 0, 0.1);
+  margin: 2.5rem auto;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 750px) {
+  .container {
+    max-width: 90%;
   }
-  to {
-    transform: rotate(360deg);
+  .d-sidebar {
+    display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 70%;
   }
 }

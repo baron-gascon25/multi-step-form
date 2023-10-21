@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import Sidebar from "./components/sidebar";
+import Info from "./components/info";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+    <div className='center-item'>
+      <div className='container d-flex'>
+        <Sidebar />
+        <Info />
+      </div>
+      <div className='attribution'>
+        Challenge by{" "}
         <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          href='https://www.frontendmentor.io?ref=challenge'
+          target='_blank'
+          rel='noreferrer'
         >
-          Learn React
+          Frontend Mentor
         </a>
-      </header>
+        . Coded by{" "}
+        <a href='https://www.frontendmentor.io/profile/baron-gascon25'>
+          Baron Gascon
+        </a>
+        .
+      </div>
     </div>
   );
 }
