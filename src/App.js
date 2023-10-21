@@ -2,10 +2,12 @@ import "./App.css";
 
 import Sidebar from "./components/sidebar";
 import Info from "./components/info";
+import Navbar from "./components/navbar";
 
 function App() {
   return (
     <div className='center-item'>
+      <Navbar />
       <div className='container d-flex'>
         <Sidebar />
         <Info />
