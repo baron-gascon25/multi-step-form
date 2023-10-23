@@ -8,16 +8,20 @@ import Navbar from "./components/navbar";
 import Button from "./components/button";
 import Plan from "./components/plan";
 import Mobilebtn from "./components/mobilebtn";
+import Addons from "./components/addons";
 
 function App() {
   const [page, setPage] = useState(1);
   const [view, setView] = useState("");
+  const [summary, setSummary] = useState({});
 
   useEffect(() => {
     if (page === 1) {
       setView(<Info className='row-2' />);
     } else if (page === 2) {
       setView(<Plan className='row-2 container-plan' />);
+    } else if (page === 3) {
+      setView(<Addons className='row-2 container-plan' />);
     }
   }, [page]);
 
@@ -35,20 +39,16 @@ function App() {
   return (
     <div className='center-item'>
       <Navbar />
-      <div className={`container ${page === 2 && "container-plan"} d-flex`}>
+      <div className={`${page > 1 ? "container-plan" : "container"} d-flex`}>
         <Sidebar className='row-1' />
         <div className='d-flex-col'>
           {view}
-          <footer
-            className={`footer ${page === 1 && "footer-start"} m-1 me-1-5`}
-          >
-            <Button
-              onClickNext={onClickNextHandler}
-              onClickPrev={onClickPrevHandler}
-              page={page}
-              className='footer-pos'
-            />
-          </footer>
+          <Button
+            onClickNext={onClickNextHandler}
+            onClickPrev={onClickPrevHandler}
+            page={page}
+            className='footer-pos'
+          />
           <Mobilebtn
             onClickNext={onClickNextHandler}
             onClickPrev={onClickPrevHandler}

@@ -2,7 +2,7 @@ import React from "react";
 
 const button = ({ onClickNext, onClickPrev, page }) => {
   return (
-    <React.Fragment>
+    <footer className={`footer ${page === 1 && "footer-start"}`}>
       {page > 1 && (
         <button className='d-btn-prev' onClick={onClickPrev} style={btnWidth}>
           <h6 className='mt-0 mb-0' style={{ color: "#184a89" }}>
@@ -13,7 +13,7 @@ const button = ({ onClickNext, onClickPrev, page }) => {
       <button className='d-btn-next' onClick={onClickNext} style={btnWidth}>
         <h6 className='mt-0 mb-0'>Next Step</h6>
       </button>
-    </React.Fragment>
+    </footer>
   );
 };
 

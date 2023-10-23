@@ -149,10 +149,30 @@ html {
   flex: 1 1 1 1;
 }
 
-.card {
+.cards-adons {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-adons-monthly {
+  border-radius: 10px;
+  border: 1px solid grey;
+  height: auto;
+  width: 100%;
+  justify-content: stretch;
+}
+
+.card-monthly {
   border-radius: 10px;
   border: 1px solid grey;
   height: 10rem;
+  width: 8.5rem;
+}
+
+.card-yearly {
+  border-radius: 10px;
+  border: 1px solid grey;
+  height: 11rem;
   width: 8.5rem;
 }
 
@@ -206,6 +226,7 @@ p {
   text-align: center;
 }
 
+.container-plan,
 .container {
   width: 65%;
   height: 600px;
@@ -217,6 +238,10 @@ p {
 
 .container-2 {
   height: 80%;
+}
+
+.container-adons {
+  width: inherit;
 }
 
 .info-p {
@@ -233,6 +258,8 @@ p {
 
 .footer {
   padding: 1rem 2.5rem;
+  margin: 1rem;
+  width: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -247,6 +274,7 @@ p {
 }
 
 .d-btn-next {
+  cursor: pointer;
   border-width: 1px;
   border-radius: 10px;
   padding: 1rem;
@@ -255,10 +283,76 @@ p {
 }
 
 .d-btn-prev {
+  cursor: pointer;
   padding: 1rem;
   color: #184a89;
   border: none;
   background-color: transparent;
+}
+
+.switch {
+  display: flex;
+  justify-content: center;
+}
+
+#toggle {
+  display: none;
+}
+
+label {
+  width: 3rem;
+  height: 1.5rem;
+  background-color: hsl(213, 96%, 18%);
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+label::after {
+  content: "";
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+  margin-left: 0.3em;
+  width: 1rem;
+  height: 1rem;
+  background-color: #fff;
+  border-radius: 50%;
+  position: fixed;
+  transition: transform 0.3s;
+}
+
+input[type="checkbox"]:checked + label {
+  background-color: hsl(213, 96%, 18%);
+}
+
+input[type="checkbox"]:checked + label::after {
+  transform: translateX(1.3rem);
+}
+
+.monthly,
+.yearly {
+  margin: 0.25em;
+  font-family: "Ubuntu-Medium";
+  font-weight: 500;
+  font-size: 15px;
+  color: hsl(231, 11%, 63%);
+}
+
+.monthly {
+  margin-right: 1em;
+}
+
+.yearly {
+  margin-left: 1em;
+}
+
+.active {
+  color: hsl(213, 96%, 18%);
+}
+
+.sub {
+  margin: 0.25rem 1rem;
+  font-size: 14px;
+  color: hsl(213, 96%, 18%);
 }
 
 @media (max-width: 750px) {
@@ -286,6 +380,10 @@ p {
     height: 590px;
     z-index: 10;
     margin-top: 6rem;
+    margin-bottom: 2rem;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 10px;
+    box-shadow: 0 7px 7px -1px rgba(0, 0, 0, 0.1);
     justify-content: center;
   }
   .m-btn-prev {
@@ -329,7 +427,8 @@ p {
   .info {
     margin: 1.5rem;
   }
-  .card {
+  .card-yearly,
+  .card-monthly {
     flex-direction: column;
   }
   .info-p {
@@ -340,12 +439,22 @@ p {
     display: none;
   }
   /* Plan */
+  .monthly,
+  .yearly {
+    font-weight: 600;
+  }
   .cards {
     display: flex;
     flex-direction: column;
   }
-  .card {
+  .card-monthly {
     height: 5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .card-yearly {
+    height: 6rem;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -359,17 +468,19 @@ p {
     flex-direction: column;
   }
   .h-plan {
-    margin: 1rem 0rem 0rem 0rem;
+    margin: 1rem 0rem 0rem;
   }
   .p-plan {
-    margin: 0.5rem 0rem 0rem 0rem;
+    margin: 0.5rem 0rem 0rem;
+  }
+  .sub {
+    margin: 0.25rem 0rem 0rem;
   }
 }
 
-@media (max-width: 1128px) and (min-width: 751px) {
+@media (max-width: 1189px) and (min-width: 751px) {
   .container {
     max-width: 65%;
-    justify-content: center;
   }
   .navbar {
     display: none;
@@ -386,7 +497,7 @@ p {
   .footer {
     padding: 0rem;
     margin-top: 0rem;
-    justify-content: flex-start;
+    justify-content: space-between;
   }
   .m-btn-next,
   .m-btn-prev,
@@ -394,13 +505,22 @@ p {
     display: none;
   }
   /* Plan Section */
+  .switch {
+    margin-top: 1rem;
+  }
   .cards {
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
   }
-  .card {
+  .card-monthly {
     height: 5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .card-yearly {
+    height: 5.5rem;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -414,14 +534,17 @@ p {
     flex-direction: column;
   }
   .h-plan {
-    margin: 1rem 0rem 0rem 0rem;
+    margin: 1rem 0rem 0rem;
   }
   .p-plan {
-    margin: 0.5rem 0rem 0rem 0rem;
+    margin: 0.5rem 0rem 0rem;
+  }
+  .sub {
+    margin: 0.25rem 0rem 0rem;
   }
 }
 
-@media (min-width: 1129px) and (max-width: 1499px) {
+@media (min-width: 1190px) and (max-width: 1499px) {
   .container {
     max-width: 65%;
   }
@@ -440,9 +563,10 @@ p {
   /* Plan Section */
   .plan {
     margin-left: 4rem;
-    margin-right: 4rem;
+    margin-right: 2rem;
   }
   .cards {
+    margin-top: 3rem;
     display: flex;
     flex-direction: row;
   }
@@ -452,9 +576,13 @@ p {
   .p-plan {
     margin: 0.5rem 1rem 0rem;
   }
+  .switch {
+    margin-top: 3rem;
+  }
 }
 
 @media (min-width: 1500px) {
+  .container-plan,
   .container {
     max-width: 55%;
   }
@@ -476,6 +604,7 @@ p {
     margin-right: 4rem;
   }
   .cards {
+    margin-top: 3rem;
     display: flex;
     flex-direction: row;
   }
@@ -484,5 +613,8 @@ p {
   }
   .p-plan {
     margin: 0.5rem 1rem 0rem;
+  }
+  .switch {
+    margin-top: 3rem;
   }
 }
