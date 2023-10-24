@@ -152,6 +152,7 @@ html {
 .cards-adons {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .card-adons-monthly {
@@ -160,20 +161,36 @@ html {
   height: auto;
   width: 100%;
   justify-content: stretch;
+  cursor: pointer;
 }
 
 .card-monthly {
   border-radius: 10px;
-  border: 1px solid grey;
+  border: 1px solid rgb(219, 219, 219);
   height: 10rem;
   width: 8.5rem;
+  cursor: pointer;
 }
 
 .card-yearly {
   border-radius: 10px;
-  border: 1px solid grey;
+  border: 1px solid rgb(219, 219, 219);
   height: 11rem;
   width: 8.5rem;
+  cursor: pointer;
+}
+
+.card-monthly-active {
+  border: 1px solid hsl(243, 100%, 62%);
+}
+
+.card-yearly-active {
+  border: 1px solid hsl(243, 100%, 62%);
+}
+
+.card-monthly:hover,
+.card-yearly:hover {
+  border: 1px solid hsl(243, 100%, 62%);
 }
 
 .justify-content-center {
@@ -223,6 +240,17 @@ p {
   padding: 0.25rem;
   border: 1px solid hsl(0, 0%, 100%);
   color: hsl(0, 0%, 100%);
+  text-align: center;
+}
+
+.circle-active {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 0.25rem;
+  border: 1px solid hsl(0, 0%, 100%);
+  color: hsl(213, 96%, 18%);
+  background-color: hsl(206, 94%, 87%);
   text-align: center;
 }
 
@@ -476,6 +504,10 @@ input[type="checkbox"]:checked + label::after {
   .sub {
     margin: 0.25rem 0rem 0rem;
   }
+  /* Adons */
+  .card-adons-monthly {
+    height: 6.5rem;
+  }
 }
 
 @media (max-width: 1189px) and (min-width: 751px) {
@@ -541,6 +573,10 @@ input[type="checkbox"]:checked + label::after {
   }
   .sub {
     margin: 0.25rem 0rem 0rem;
+  }
+  /* Adons */
+  .card-adons-monthly {
+    height: 6rem;
   }
 }
 

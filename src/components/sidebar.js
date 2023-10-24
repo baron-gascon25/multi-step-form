@@ -1,10 +1,12 @@
 import React from "react";
 
-const sidebar = () => {
+const sidebar = ({ page }) => {
   return (
     <div className='m-1 d-sidebar'>
       <div className='ms-2 me-2 d-flex'>
-        <h6 className='circle mt-2-5'>1</h6>
+        <h6 className={`${page === 1 ? "circle-active" : "circle"} mt-2-5`}>
+          1
+        </h6>
         <div className='d-flex-col'>
           <p
             className='ms-1 mt-2-5'
@@ -16,7 +18,7 @@ const sidebar = () => {
         </div>
       </div>
       <div className='ms-2 me-2 mt-0 d-flex'>
-        <h6 className='circle mt-0'>2</h6>
+        <h6 className={`${page === 2 ? "circle-active" : "circle"} mt-0`}>2</h6>
         <div className='d-flex-col'>
           <p
             className='ms-1 mt-0'
@@ -28,7 +30,7 @@ const sidebar = () => {
         </div>
       </div>
       <div className='ms-2 me-2 mt-0 d-flex'>
-        <h6 className='circle mt-0'>3</h6>
+        <h6 className={`${page === 3 ? "circle-active" : "circle"} mt-0`}>3</h6>
         <div className='d-flex-col'>
           <p
             className='ms-1 mt-0'
@@ -40,7 +42,7 @@ const sidebar = () => {
         </div>
       </div>
       <div className='ms-2 me-2 mt-0 d-flex'>
-        <h6 className='circle mt-0'>4</h6>
+        <h6 className={`${page === 4 ? "circle-active" : "circle"} mt-0`}>4</h6>
         <div className='d-flex-col'>
           <p
             className='ms-1 mt-0'

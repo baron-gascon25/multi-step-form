@@ -12,7 +12,7 @@ const info = () => {
         <input type='text' placeholder='e.g. Stephen King' className='input' />
         <h6 className='info-p mb-0-5 mt-1-5'>Email</h6>
         <input
-          type='text'
+          type='email'
           placeholder='e.g. stephenking@lorem.com'
           className='input'
         />

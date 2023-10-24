@@ -13,17 +13,35 @@ import Addons from "./components/addons";
 function App() {
   const [page, setPage] = useState(1);
   const [view, setView] = useState("");
+  const [plan, setPlan] = useState("");
+  const [billing, setBilling] = useState("Monthly");
+  const [adons, setAdons] = useState([]);
   const [summary, setSummary] = useState({});
 
   useEffect(() => {
     if (page === 1) {
-      setView(<Info className='row-2' />);
+      setView(<Info className='row-1' />);
     } else if (page === 2) {
-      setView(<Plan className='row-2 container-plan' />);
+      setView(
+        <Plan
+          className='row-1 container-plan'
+          onClickPlan={onClickPlanHandler}
+          onClickBilling={onClickBillingHandler}
+          billing={billing}
+          plan={plan}
+        />
+      );
     } else if (page === 3) {
-      setView(<Addons className='row-2 container-plan' />);
+      setView(
+        <Addons
+          className='row-1 container-plan'
+          billing={billing}
+          onClickAdons={onClickAdonsHandler}
+          adOns={adons}
+        />
+      );
     }
-  }, [page]);
+  }, [page, plan, billing, adons]);
 
   const onClickNextHandler = () => {
     if (page === 4) {
@@ -36,11 +54,33 @@ function App() {
     setPage(page - 1);
   };
 
+  const onClickPlanHandler = (plan) => {
+    setPlan(plan);
+  };
+
+  const onClickBillingHandler = (billing) => {
+    setBilling(billing);
+  };
+
+  const onClickAdonsHandler = (thing) => {
+    setAdons(thing);
+    adons.filter((ad) => ad === thing);
+  };
+
+  const summaryHandler = () => {
+    setSummary({
+      plan: plan,
+      billing: billing,
+    });
+  };
+
+  console.log(adons);
+
   return (
     <div className='center-item'>
-      <Navbar />
+      <Navbar page={page} />
       <div className={`${page > 1 ? "container-plan" : "container"} d-flex`}>
-        <Sidebar className='row-1' />
+        <Sidebar page={page} />
         <div className='d-flex-col'>
           {view}
           <Button
