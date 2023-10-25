@@ -1,9 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Addons = ({ billing, onClickAdons, adOns }) => {
-  const [isChecked, setIsChecked] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
-  const [isChecked3, setIsChecked3] = useState(false);
+  const [isChecked, setIsChecked] = useState();
+  const [isChecked2, setIsChecked2] = useState();
+  const [isChecked3, setIsChecked3] = useState();
+
+  useEffect(() => {
+    const index1 = adOns.findIndex((a) => a === "Online service");
+    const index2 = adOns.findIndex((a) => a === "Larger storage");
+    const index3 = adOns.findIndex((a) => a === "Customizable profile");
+    if (index1 === -1) {
+      setIsChecked(false);
+    } else {
+      setIsChecked(true);
+    }
+    if (index2 === -1) {
+      setIsChecked2(false);
+    } else {
+      setIsChecked2(true);
+    }
+    if (index3 === -1) {
+      setIsChecked3(false);
+    } else {
+      setIsChecked3(true);
+    }
+  }, [adOns]);
+
   const setAdons = (adons) => {
     onClickAdons([...adOns, adons]);
   };
@@ -41,14 +63,12 @@ const Addons = ({ billing, onClickAdons, adOns }) => {
     }
   };
 
-  console.log(adOns);
-
   return (
-    <div className='m-1 mt-2 plan container-2 container-adons'>
+    <div className='mt-2 mb-1 plan container-2 container-adons'>
       <h1 className='mb-0'>Pick add-ons</h1>
       <p className='mt-1'>Add-ons help enhance your gaming experience.</p>
       <div className='card-adons d-flex-col'>
-        <div className='card-adons-monthly d-flex mt-1 mb-1 me-1 ms-0'>
+        <div className='card-adons-monthly d-flex'>
           <input
             type='checkbox'
             className='m-1'
@@ -57,6 +77,7 @@ const Addons = ({ billing, onClickAdons, adOns }) => {
                 ? isCheckedHandler(false, "Online service")
                 : isCheckedHandler(true, "")
             }
+            defaultChecked={isChecked}
           />
           <div className='card-text row-1'>
             <h6 className='h-plan' style={hColor}>
@@ -70,7 +91,7 @@ const Addons = ({ billing, onClickAdons, adOns }) => {
             billing === "Monthly" ? "+$1/mo" : "+$10/yr"
           }`}</p>
         </div>
-        <div className='card-adons-monthly d-flex me-1 ms-0'>
+        <div className='card-adons-monthly d-flex'>
           <input
             type='checkbox'
             className='m-1'
@@ -79,6 +100,7 @@ const Addons = ({ billing, onClickAdons, adOns }) => {
                 ? isCheckedHandler2(false, "Larger storage")
                 : isCheckedHandler2(true, "")
             }
+            defaultChecked={isChecked2}
           />
           <div className='card-text row-1'>
             <h6 className='h-plan' style={hColor}>
@@ -89,10 +111,10 @@ const Addons = ({ billing, onClickAdons, adOns }) => {
             </p>
           </div>
           <p className='m-2'>{`${
-            billing === "Monthly" ? "+$1/mo" : "+$10/yr"
+            billing === "Monthly" ? "+$2/mo" : "+$20/yr"
           }`}</p>
         </div>
-        <div className='card-adons-monthly d-flex mt-1 mb-1 me-1 ms-0'>
+        <div className='card-adons-monthly d-flex'>
           <input
             type='checkbox'
             className='m-1'
@@ -101,6 +123,7 @@ const Addons = ({ billing, onClickAdons, adOns }) => {
                 ? isCheckedHandler3(false, "Customizable profile")
                 : isCheckedHandler3(true, "")
             }
+            defaultChecked={isChecked3}
           />
           <div className='card-text row-1'>
             <h6 className='h-plan' style={hColor}>

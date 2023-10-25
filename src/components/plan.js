@@ -71,7 +71,7 @@ const Plan = ({ onClickPlan, plan, onClickBilling, billing }) => {
               Arcade
             </h6>
             <p className='m-1 p-plan' style={pSize}>
-              $9/mo
+              {billing === "Monthly" ? "$9/mo" : "$90/yr"}
             </p>
             {billing === "Yearly" && <p className='mt-0-5 sub'>{yearlySub}</p>}
           </div>
@@ -90,7 +90,7 @@ const Plan = ({ onClickPlan, plan, onClickBilling, billing }) => {
               Advanced
             </h6>
             <p className='m-1 p-plan' style={pSize}>
-              $12/mo
+              {billing === "Monthly" ? "$12/mo" : "$120/yr"}
             </p>
             {billing === "Yearly" && <p className='mt-0-5 sub'>{yearlySub}</p>}
           </div>
@@ -109,7 +109,7 @@ const Plan = ({ onClickPlan, plan, onClickBilling, billing }) => {
               Pro
             </h6>
             <p className='m-1 p-plan' style={pSize}>
-              $15/mo
+              {billing === "Monthly" ? "$15/mo" : "$150/yr"}
             </p>
             {billing === "Yearly" && <p className='mt-0-5 sub'>{yearlySub}</p>}
           </div>

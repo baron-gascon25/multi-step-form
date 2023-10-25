@@ -9,14 +9,15 @@ import Button from "./components/button";
 import Plan from "./components/plan";
 import Mobilebtn from "./components/mobilebtn";
 import Addons from "./components/addons";
+import Summary from "./components/summary";
 
-function App() {
+const App = () => {
   const [page, setPage] = useState(1);
   const [view, setView] = useState("");
   const [plan, setPlan] = useState("");
   const [billing, setBilling] = useState("Monthly");
   const [adons, setAdons] = useState([]);
-  const [summary, setSummary] = useState({});
+  const [summary, setSummary] = useState({ billing: "", plan: "", adons: "" });
 
   useEffect(() => {
     if (page === 1) {
@@ -40,8 +41,20 @@ function App() {
           adOns={adons}
         />
       );
+    } else if (page === 4) {
+      summaryHandler();
+      setView(<Summary className='row-1 container-plan' summary={summary} />);
     }
-  }, [page, plan, billing, adons]);
+    //eslint-disable-next-line
+  }, [
+    page,
+    plan,
+    billing,
+    adons,
+    summary.billing,
+    summary.adons,
+    summary.plan,
+  ]);
 
   const onClickNextHandler = () => {
     if (page === 4) {
@@ -71,10 +84,9 @@ function App() {
     setSummary({
       plan: plan,
       billing: billing,
+      adons: adons,
     });
   };
-
-  console.log(adons);
 
   return (
     <div className='center-item'>
@@ -111,6 +123,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;

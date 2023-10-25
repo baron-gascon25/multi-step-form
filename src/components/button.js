@@ -10,9 +10,15 @@ const button = ({ onClickNext, onClickPrev, page }) => {
           </h6>
         </button>
       )}
-      <button className='d-btn-next' onClick={onClickNext} style={btnWidth}>
-        <h6 className='mt-0 mb-0'>Next Step</h6>
-      </button>
+      {page !== 4 ? (
+        <button className='d-btn-next' onClick={onClickNext} style={btnWidth}>
+          <h6 className='mt-0 mb-0'>Next Step</h6>
+        </button>
+      ) : (
+        <button className='d-btn-next' onClick={onClickNext} style={btnWidth}>
+          <h6 className='mt-0 mb-0'>Confirm</h6>
+        </button>
+      )}
     </footer>
   );
 };
