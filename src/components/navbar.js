@@ -13,7 +13,11 @@ const navbar = ({ page }) => {
         <h6 className={`${page === 3 ? "circle-active" : "circle"}`}>3</h6>
       </div>
       <div className='mx-1'>
-        <h6 className={`${page === 4 ? "circle-active" : "circle"}`}>4</h6>
+        <h6
+          className={`${page === 4 || page === 5 ? "circle-active" : "circle"}`}
+        >
+          4
+        </h6>
       </div>
     </div>
   );

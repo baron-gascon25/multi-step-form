@@ -2,7 +2,7 @@ import React from "react";
 
 const sidebar = ({ page }) => {
   return (
-    <div className='m-1 d-sidebar'>
+    <div className={`m-1 d-sidebar ${page === 5 && "d-sidebar-5"}`}>
       <div className='ms-2 me-2 d-flex'>
         <h6 className={`${page === 1 ? "circle-active" : "circle"} mt-2-5`}>
           1
@@ -42,7 +42,13 @@ const sidebar = ({ page }) => {
         </div>
       </div>
       <div className='ms-2 me-2 mt-0 d-flex'>
-        <h6 className={`${page === 4 ? "circle-active" : "circle"} mt-0`}>4</h6>
+        <h6
+          className={`${
+            page === 4 || page === 5 ? "circle-active" : "circle"
+          } mt-0`}
+        >
+          4
+        </h6>
         <div className='d-flex-col'>
           <p
             className='ms-1 mt-0'

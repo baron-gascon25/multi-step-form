@@ -26,39 +26,32 @@ const Addons = ({ billing, onClickAdons, adOns }) => {
     }
   }, [adOns]);
 
-  const setAdons = (adons) => {
-    onClickAdons([...adOns, adons]);
-  };
-
   const isCheckedHandler = (bool, ad) => {
     if (bool === false) {
-      setAdons(ad);
+      onClickAdons([...adOns, ad]);
       setIsChecked(true);
     } else {
-      const index = adOns.findIndex((a) => a === ad);
-      adOns.splice(index, 1);
+      onClickAdons(adOns.filter((ads) => ad !== ads));
       setIsChecked(false);
     }
   };
 
   const isCheckedHandler2 = (bool, ad) => {
     if (bool === false) {
-      setAdons(ad);
+      onClickAdons([...adOns, ad]);
       setIsChecked2(true);
     } else {
-      const index = adOns.findIndex((a) => a === ad);
-      adOns.splice(index, 1);
+      onClickAdons(adOns.filter((ads) => ad !== ads));
       setIsChecked2(false);
     }
   };
 
   const isCheckedHandler3 = (bool, ad) => {
     if (bool === false) {
-      setAdons(ad);
+      onClickAdons([...adOns, ad]);
       setIsChecked3(true);
     } else {
-      const index = adOns.findIndex((a) => a === ad);
-      adOns.splice(index, 1);
+      onClickAdons(adOns.filter((ads) => ad !== ads));
       setIsChecked3(false);
     }
   };
@@ -68,14 +61,18 @@ const Addons = ({ billing, onClickAdons, adOns }) => {
       <h1 className='mb-0'>Pick add-ons</h1>
       <p className='mt-1'>Add-ons help enhance your gaming experience.</p>
       <div className='card-adons d-flex-col'>
-        <div className='card-adons-monthly d-flex'>
+        <div
+          className={`card-adons-monthly ${
+            isChecked && "card-adons-monthly-active"
+          } d-flex`}
+        >
           <input
             type='checkbox'
             className='m-1'
             onClick={() =>
               isChecked === false
                 ? isCheckedHandler(false, "Online service")
-                : isCheckedHandler(true, "")
+                : isCheckedHandler(true, "Online service")
             }
             defaultChecked={isChecked}
           />
@@ -87,18 +84,22 @@ const Addons = ({ billing, onClickAdons, adOns }) => {
               Access to multiplayer games
             </p>
           </div>
-          <p className='m-2'>{`${
+          <p className='m-2' style={priceStyle}>{`${
             billing === "Monthly" ? "+$1/mo" : "+$10/yr"
           }`}</p>
         </div>
-        <div className='card-adons-monthly d-flex'>
+        <div
+          className={`card-adons-monthly ${
+            isChecked2 && "card-adons-monthly-active"
+          } d-flex`}
+        >
           <input
             type='checkbox'
             className='m-1'
             onClick={() =>
               isChecked2 === false
                 ? isCheckedHandler2(false, "Larger storage")
-                : isCheckedHandler2(true, "")
+                : isCheckedHandler2(true, "Larger storage")
             }
             defaultChecked={isChecked2}
           />
@@ -110,18 +111,22 @@ const Addons = ({ billing, onClickAdons, adOns }) => {
               Extra 1TB of cloud save
             </p>
           </div>
-          <p className='m-2'>{`${
+          <p className='m-2' style={priceStyle}>{`${
             billing === "Monthly" ? "+$2/mo" : "+$20/yr"
           }`}</p>
         </div>
-        <div className='card-adons-monthly d-flex'>
+        <div
+          className={`card-adons-monthly ${
+            isChecked3 && "card-adons-monthly-active"
+          } d-flex`}
+        >
           <input
             type='checkbox'
             className='m-1'
             onClick={() =>
               isChecked3 === false
                 ? isCheckedHandler3(false, "Customizable profile")
-                : isCheckedHandler3(true, "")
+                : isCheckedHandler3(true, "Customizable profile")
             }
             defaultChecked={isChecked3}
           />
@@ -133,7 +138,7 @@ const Addons = ({ billing, onClickAdons, adOns }) => {
               Custom theme on your profile
             </p>
           </div>
-          <p className='m-2'>{`${
+          <p className='m-2' style={priceStyle}>{`${
             billing === "Monthly" ? "+$2/mo" : "+$20/yr"
           }`}</p>
         </div>
@@ -148,6 +153,10 @@ const hColor = {
 
 const pSize = {
   fontSize: "14px",
+};
+
+const priceStyle = {
+  color: "hsl(243, 100%, 62%)",
 };
 
 export default Addons;

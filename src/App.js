@@ -10,10 +10,16 @@ import Plan from "./components/plan";
 import Mobilebtn from "./components/mobilebtn";
 import Addons from "./components/addons";
 import Summary from "./components/summary";
+import EndMessage from "./components/endMessage";
 
 const App = () => {
   const [page, setPage] = useState(1);
   const [view, setView] = useState("");
+  const [userInfo, setUserInfo] = useState({
+    name: "",
+    email: "",
+    contact: "",
+  });
   const [plan, setPlan] = useState("");
   const [billing, setBilling] = useState("Monthly");
   const [adons, setAdons] = useState([]);
@@ -21,7 +27,13 @@ const App = () => {
 
   useEffect(() => {
     if (page === 1) {
-      setView(<Info className='row-1' />);
+      setView(
+        <Info
+          className='row-1'
+          onInfoChange={onInfoChangeHandler}
+          userInfo={userInfo}
+        />
+      );
     } else if (page === 2) {
       setView(
         <Plan
@@ -41,9 +53,19 @@ const App = () => {
           adOns={adons}
         />
       );
-    } else if (page === 4) {
       summaryHandler();
-      setView(<Summary className='row-1 container-plan' summary={summary} />);
+    } else if (page === 4) {
+      setView(
+        <Summary
+          className='row-1 container-plan'
+          billing={summary.billing}
+          adons={summary.adons}
+          plan={summary.plan}
+          onClickChangeBtn={onClickChangeBtnHandler}
+        />
+      );
+    } else if (page === 5) {
+      setView(<EndMessage className='row-1 container-plan' />);
     }
     //eslint-disable-next-line
   }, [
@@ -57,14 +79,47 @@ const App = () => {
   ]);
 
   const onClickNextHandler = () => {
-    if (page === 4) {
-      return page;
+    if (page === 1) {
+      if (
+        userInfo.name === "" ||
+        userInfo.email === "" ||
+        userInfo.contact === ""
+      ) {
+        return page;
+      }
+      setPage(page + 1);
     }
-    setPage(page + 1);
+    if (page === 2) {
+      if (plan === "") {
+        return page;
+      }
+      setPage(page + 1);
+    }
+    if (page === 3) {
+      if (adons.length === 0) {
+        return page;
+      }
+      setPage(page + 1);
+    }
+    if (page === 4) {
+      setPage(page + 1);
+    }
+  };
+
+  const onInfoChangeHandler = (uname, uemail, ucontact) => {
+    setUserInfo({
+      name: uname,
+      email: uemail,
+      contact: ucontact,
+    });
   };
 
   const onClickPrevHandler = () => {
     setPage(page - 1);
+  };
+
+  const onClickChangeBtnHandler = () => {
+    setPage(2);
   };
 
   const onClickPlanHandler = (plan) => {
@@ -77,7 +132,6 @@ const App = () => {
 
   const onClickAdonsHandler = (thing) => {
     setAdons(thing);
-    adons.filter((ad) => ad === thing);
   };
 
   const summaryHandler = () => {
@@ -91,21 +145,29 @@ const App = () => {
   return (
     <div className='center-item'>
       <Navbar page={page} />
-      <div className={`${page > 1 ? "container-plan" : "container"} d-flex`}>
+      <div
+        className={`${
+          page > 1 && page < 5 ? "container-plan" : "container"
+        } d-flex`}
+      >
         <Sidebar page={page} />
         <div className='d-flex-col'>
           {view}
-          <Button
-            onClickNext={onClickNextHandler}
-            onClickPrev={onClickPrevHandler}
-            page={page}
-            className='footer-pos'
-          />
-          <Mobilebtn
-            onClickNext={onClickNextHandler}
-            onClickPrev={onClickPrevHandler}
-            page={page}
-          />
+          {page !== 5 && (
+            <>
+              <Button
+                onClickNext={onClickNextHandler}
+                onClickPrev={onClickPrevHandler}
+                page={page}
+                className='footer-pos'
+              />
+              <Mobilebtn
+                onClickNext={onClickNextHandler}
+                onClickPrev={onClickPrevHandler}
+                page={page}
+              />
+            </>
+          )}
         </div>
       </div>
       <div className='attribution'>

@@ -5,9 +5,9 @@ const mobilebtn = ({ onClickNext, onClickPrev, page }) => {
     <footer className={`m-footer ${page === 1 && "m-footer-start"}`}>
       {page > 1 && (
         <button
-          className='m-btn-prev m-1 ms-2'
+          className='m-btn-prev m-1 ms-0'
           onClick={onClickPrev}
-          style={btnWidth}
+          style={backBtn}
         >
           <h6 className='mt-0 mb-0' style={{ color: "#184a89" }}>
             Go back
@@ -24,7 +24,7 @@ const mobilebtn = ({ onClickNext, onClickPrev, page }) => {
         </button>
       ) : (
         <button
-          className='m-btn-next m-1 me-2'
+          className='m-btn-confirm m-1 me-2'
           onClick={onClickNext}
           style={btnWidth}
         >
@@ -37,6 +37,10 @@ const mobilebtn = ({ onClickNext, onClickPrev, page }) => {
 
 const btnWidth = {
   width: "auto",
+};
+
+const backBtn = {
+  textAlign: "start",
 };
 
 export default mobilebtn;

@@ -35,6 +35,10 @@ html {
   align-items: center;
 }
 
+.p-center {
+  text-align: center;
+}
+
 /* Margins */
 
 .m-1 {
@@ -188,10 +192,18 @@ html {
   border-radius: 10px;
   border: 1px solid grey;
   height: auto;
-  width: 95%;
+  width: 100%;
   justify-content: stretch;
   cursor: pointer;
   margin: 0.5rem 0rem 0.5rem;
+}
+
+.card-adons-monthly:hover {
+  border: 1px solid hsl(243, 100%, 62%);
+}
+
+.card-adons-monthly-active {
+  border: 1px solid hsl(243, 100%, 62%);
 }
 
 .card-monthly {
@@ -286,7 +298,7 @@ p {
 
 .container,
 .container-plan {
-  width: 65%;
+  width: 55%;
   height: 600px;
   background-color: hsl(0, 0%, 100%);
   border-radius: 10px;
@@ -298,6 +310,10 @@ p {
   height: 80%;
 }
 
+.container-3 {
+  height: 100%;
+}
+
 .info-p {
   color: hsl(213, 96%, 18%);
   font-size: 15px;
@@ -307,7 +323,7 @@ p {
   border-width: 1px;
   border-radius: 10px;
   padding: 1rem;
-  width: 100%;
+  width: 95%;
 }
 
 .footer {
@@ -329,19 +345,46 @@ p {
 
 .d-btn-next {
   cursor: pointer;
-  border-width: 1px;
+  border-width: 0px;
   border-radius: 10px;
   padding: 1rem;
-  background-color: #184a89;
+  background-color: hsl(213, 96%, 18%);
+  color: hsl(0, 0%, 100%);
+}
+
+.d-btn-confirm {
+  cursor: pointer;
+  border-width: 0px;
+  border-radius: 10px;
+  border-color: none;
+  padding: 1rem;
+  background-color: hsl(243, 100%, 62%);
+  color: hsl(0, 0%, 100%);
+}
+
+.d-btn-confirm:hover {
+  cursor: pointer;
+  border-width: 0px;
+  border-radius: 10px;
+  border-color: none;
+  padding: 1rem;
+  background-color: hsl(228, 100%, 84%);
   color: hsl(0, 0%, 100%);
 }
 
 .d-btn-prev {
   cursor: pointer;
   padding: 1rem;
-  color: #184a89;
+  color: hsl(213, 96%, 18%);
   border: none;
   background-color: transparent;
+}
+
+.d-btn-next:hover {
+  background-color: #184a89;
+}
+.d-btn-prev:hover {
+  color: #184a89;
 }
 
 .switch {
@@ -409,7 +452,24 @@ input[type="checkbox"]:checked + label::after {
   color: hsl(213, 96%, 18%);
 }
 
-@media (max-width: 750px) {
+.input-invalid {
+  border-color: hsl(354, 84%, 57%);
+}
+.space-between {
+  justify-content: space-between;
+}
+
+.p-change-style {
+  font-size: 13.5px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.p-change-style:hover {
+  color: hsl(243, 100%, 62%);
+}
+
+@media (max-width: 995px) {
   .navbar {
     background-image: url("./images/bg-sidebar-mobile.svg");
     background-repeat: no-repeat;
@@ -442,16 +502,36 @@ input[type="checkbox"]:checked + label::after {
   }
   .m-btn-prev {
     padding: 1rem;
-    color: #184a89;
+    color: hsl(213, 96%, 18%);
     border: none;
     background-color: transparent;
   }
   .m-btn-next {
-    border-width: 1px;
+    border-width: 0px;
     border-radius: 10px;
     padding: 1rem;
-    background-color: #184a89;
+    background-color: hsl(213, 96%, 18%);
     color: hsl(0, 0%, 100%);
+  }
+  .m-btn-confirm {
+    border-width: 0px;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: hsl(243, 100%, 62%);
+    color: hsl(0, 0%, 100%);
+  }
+  .input {
+    width: 90%;
+  }
+  .h-mob {
+    font-size: 1.5rem;
+  }
+  .i-mob {
+    max-width: auto;
+    max-height: 3.5rem;
+  }
+  .p-mob {
+    margin: 0rem 1.3rem 0rem;
   }
   /* Footer */
   .m-footer {
@@ -536,7 +616,7 @@ input[type="checkbox"]:checked + label::after {
   }
 }
 
-@media (max-width: 1189px) and (min-width: 751px) {
+@media (max-width: 1189px) and (min-width: 996px) {
   .container {
     max-width: 65%;
   }
@@ -550,6 +630,9 @@ input[type="checkbox"]:checked + label::after {
   }
   .info-p {
     margin-top: 0.5rem;
+  }
+  .form-class {
+    margin-right: 2rem;
   }
   /* Footer Section */
   .footer {
@@ -609,8 +692,9 @@ input[type="checkbox"]:checked + label::after {
 }
 
 @media (min-width: 1190px) and (max-width: 1499px) {
-  .container {
-    max-width: 65%;
+  .container,
+  .container-plan {
+    width: 65%;
   }
   .navbar {
     display: none;
@@ -618,6 +702,9 @@ input[type="checkbox"]:checked + label::after {
   .info {
     margin-left: 4rem;
     margin-right: 4rem;
+  }
+  .d-sidebar {
+    width: 60%;
   }
   .m-btn-next,
   .m-btn-prev,
@@ -643,19 +730,25 @@ input[type="checkbox"]:checked + label::after {
   .switch {
     margin-top: 3rem;
   }
+  .end-msg {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
 }
 
 @media (min-width: 1500px) {
   .container-plan,
   .container {
-    max-width: 55%;
+    width: 55%;
   }
   .navbar {
     display: none;
   }
-  .info {
-    margin-left: 4rem;
-    margin-right: 4rem;
+  .d-sidebar {
+    width: 30%;
+  }
+  .d-sidebar-5 {
+    width: 50%;
   }
   .m-btn-next,
   .m-btn-prev,
@@ -663,6 +756,8 @@ input[type="checkbox"]:checked + label::after {
     display: none;
   }
   /* Plan Section */
+  .info,
+  .end-msg,
   .plan {
     margin-left: 4rem;
     margin-right: 4rem;

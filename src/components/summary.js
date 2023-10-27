@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const Summary = ({ summary: { billing, plan, adons } }) => {
+const Summary = ({ billing, plan, adons, onClickChangeBtn }) => {
   const [prices, setPrices] = useState();
+  const [finalPrice, setFinalPrice] = useState(0);
 
   const pricesMonthly = {
     Arcade: 9,
@@ -23,8 +24,24 @@ const Summary = ({ summary: { billing, plan, adons } }) => {
 
   useEffect(() => {
     setPrice();
+    let result = 0;
+    const getPriceItem = (item) => {
+      let itemKey = "";
+      let itemKeyArray = [];
+      try {
+        itemKey = Object.entries(prices).filter(([key]) => key === item);
+        itemKeyArray = itemKey[0];
+        return itemKeyArray[1];
+      } catch (error) {}
+    };
+    result += getPriceItem(plan);
+    Array.isArray(adons) &&
+      adons.map((ad) => {
+        return (result = result + getPriceItem(ad));
+      });
+    setFinalPrice(result);
     //eslint-disable-next-line
-  }, [adons, billing, plan]);
+  }, [adons, billing, plan, finalPrice]);
 
   const setPrice = () => {
     if (billing === "Monthly") {
@@ -40,7 +57,7 @@ const Summary = ({ summary: { billing, plan, adons } }) => {
     try {
       itemKey = Object.entries(prices).filter(([key]) => key === item);
       itemKeyArray = itemKey[0];
-      return itemKeyArray.splice(1, 1);
+      return itemKeyArray[1];
     } catch (error) {}
   };
 
@@ -56,7 +73,10 @@ const Summary = ({ summary: { billing, plan, adons } }) => {
             <h6 className='mb-0' style={hColor}>
               {`${plan} (${billing})`}
             </h6>
-            <p className='mb-1 mt-0-5' style={pSize}>
+            <p
+              className='mb-1 mt-0-5 p-change-style'
+              onClick={onClickChangeBtn}
+            >
               Change
             </p>
           </div>
@@ -64,19 +84,19 @@ const Summary = ({ summary: { billing, plan, adons } }) => {
             {`$${getPrice(plan)}${billing === "Monthly" ? "/mo" : "/yr"}`}
           </h6>
         </div>
-        <hr className='mt-1 me-1' />
+        <hr className='mt-1 me-1 mb-1' />
         {Array.isArray(adons) &&
           adons.map((ad) => (
             <div
               className='d-flex'
               key={`esdw${Math.floor(Math.random() * 100)}`}
             >
-              <p className='mt-1 mb-1 row-1' style={pSize} key={ad}>
+              <p className='mt-0-5 mb-0-5 row-1' style={pSize} key={ad}>
                 {ad}
               </p>
               {billing === "Monthly" ? (
                 <p
-                  className='mt-1 me-1 mb-1'
+                  className='mt-0-5 me-1 mb-0-5'
                   style={hColor1}
                   key={`axdw${Math.floor(Math.random() * 100)}`}
                 >
@@ -84,7 +104,7 @@ const Summary = ({ summary: { billing, plan, adons } }) => {
                 </p>
               ) : (
                 <p
-                  className='mt-1 me-1 mb-1'
+                  className='mt-0-5 me-1 mb-0-5'
                   style={hColor1}
                   key={`adewdw${Math.floor(Math.random() * 100)}`}
                 >
@@ -93,6 +113,16 @@ const Summary = ({ summary: { billing, plan, adons } }) => {
               )}
             </div>
           ))}
+        <div className='d-flex align-items-center '>
+          <p className='row-1' style={pSize}>
+            {`Total (${billing === "Monthly" ? "per month" : "per year"})`}
+          </p>
+          <h6 className='m-0 me-1' style={hColorTotal}>
+            {`+$${finalPrice.toString()}/${
+              billing === "Monthly" ? "mo" : "yr"
+            }`}
+          </h6>
+        </div>
       </div>
     </div>
   );
@@ -106,8 +136,14 @@ const hColor = {
 
 const hColor1 = {
   color: "hsl(213, 96%, 18%)",
-  fontWeight: "500",
+  fontWeight: "600",
   fontSize: "13.5px",
+};
+
+const hColorTotal = {
+  color: "hsl(243, 100%, 62%)",
+  fontWeight: "600",
+  fontSize: "18px",
 };
 
 const pSize = {
