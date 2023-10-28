@@ -192,7 +192,7 @@ html {
   border-radius: 10px;
   border: 1px solid grey;
   height: auto;
-  width: 100%;
+  width: 95%;
   justify-content: stretch;
   cursor: pointer;
   margin: 0.5rem 0rem 0.5rem;
@@ -754,6 +754,9 @@ input[type="checkbox"]:checked + label::after {
   .m-btn-prev,
   .m-footer {
     display: none;
+  }
+  .card-adons-monthly {
+    width: 100%;
   }
   /* Plan Section */
   .info,

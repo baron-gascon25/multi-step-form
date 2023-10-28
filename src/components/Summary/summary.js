@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
 
+const pricesMonthly = {
+  Arcade: 9,
+  Advanced: 12,
+  Pro: 15,
+  "Online service": 1,
+  "Larger storage": 2,
+  "Customizable profile": 2,
+};
+
+const pricesYearly = {
+  Arcade: 90,
+  Advanced: 120,
+  Pro: 150,
+  "Online service": 10,
+  "Larger storage": 20,
+  "Customizable profile": 20,
+};
+
 const Summary = ({ billing, plan, adons, onClickChangeBtn }) => {
   const [prices, setPrices] = useState();
   const [finalPrice, setFinalPrice] = useState(0);
-
-  const pricesMonthly = {
-    Arcade: 9,
-    Advanced: 12,
-    Pro: 15,
-    "Online service": 1,
-    "Larger storage": 2,
-    "Customizable profile": 2,
-  };
-
-  const pricesYearly = {
-    Arcade: 90,
-    Advanced: 120,
-    Pro: 150,
-    "Online service": 10,
-    "Larger storage": 20,
-    "Customizable profile": 20,
-  };
 
   useEffect(() => {
     setPrice();
@@ -62,7 +62,7 @@ const Summary = ({ billing, plan, adons, onClickChangeBtn }) => {
   };
 
   return (
-    <div className='m-1 mt-2 plan container-2'>
+    <div className='ms-1 me-1 mb-0 mt-2 plan container-2'>
       <h1 className='mb-0'>Finishing up</h1>
       <p className='mt-1'>
         Double-check everything looks OK before confirming.

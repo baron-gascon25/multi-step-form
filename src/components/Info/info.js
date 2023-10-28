@@ -1,4 +1,14 @@
 import React, { useEffect, useState } from "react";
+import InputCard from "./InputCard";
+
+const INPUT_NAME = "Name";
+const INPUT_NAME_PLACEHOLDER = "e.g. Stephen King";
+
+const INPUT_EMAIL = "Email";
+const INPUT_EMAIL_PLACEHOLDER = "e.g. stephenking@lorem.com";
+
+const INPUT_CONTACT = "Contact";
+const INPUT_CONTACT_PLACEHOLDER = "e.g. +1 234 567 890";
 
 const Info = ({ onInfoChange, userInfo }) => {
   const [userName, setUserName] = useState(userInfo.name);
@@ -77,64 +87,33 @@ const Info = ({ onInfoChange, userInfo }) => {
         Please provide your name, email address, and phone number.
       </p>
       <form className='form-class'>
-        <div className='d-flex-col'>
-          <div className='d-flex space-between'>
-            <h6 className='info-p mb-0-5 mt-1-5'>Name</h6>
-            <h6 className='info-p mb-0-5 mt-1-5' style={errorMsg}>
-              {error.type === "name" && error.msg}
-            </h6>
-          </div>
-          <input
-            type='text'
-            name='name'
-            placeholder='e.g. Stephen King'
-            className={`input ${error.type === "name" && error.class}`}
-            value={userName}
-            onChange={onChangeHandler}
-            onBlur={onBlurHandler}
-          />
-        </div>
-        <div className='d-flex-col'>
-          <div className='d-flex space-between'>
-            <h6 className='info-p mb-0-5 mt-1-5'>Email</h6>
-            <h6 className='info-p mb-0-5 mt-1-5' style={errorMsg}>
-              {error.type === "email" && error.msg}
-            </h6>
-          </div>
-          <input
-            type='email'
-            name='email'
-            placeholder='e.g. stephenking@lorem.com'
-            className={`input ${error.type === "email" && error.class}`}
-            value={userEmail}
-            onChange={onChangeHandler}
-            onBlur={onBlurHandler}
-          />
-        </div>
-        <div className='d-flex-col'>
-          <div className='d-flex space-between'>
-            <h6 className='info-p mb-0-5 mt-1-5'>Phone Number</h6>
-            <h6 className='info-p mb-0-5 mt-1-5' style={errorMsg}>
-              {error.type === "contact" && error.msg}
-            </h6>
-          </div>
-          <input
-            type='text'
-            name='contact'
-            placeholder='e.g. +1 234 567 890'
-            className={`input ${error.type === "contact" && error.class}`}
-            value={userContact}
-            onChange={onChangeHandler}
-            onBlur={onBlurHandler}
-          />
-        </div>
+        <InputCard
+          error={error}
+          user={userName}
+          onChangeHandler={onChangeHandler}
+          onBlurHandler={onBlurHandler}
+          inputName={INPUT_NAME}
+          inputPlaceholder={INPUT_NAME_PLACEHOLDER}
+        />
+        <InputCard
+          error={error}
+          user={userEmail}
+          onChangeHandler={onChangeHandler}
+          onBlurHandler={onBlurHandler}
+          inputName={INPUT_EMAIL}
+          inputPlaceholder={INPUT_EMAIL_PLACEHOLDER}
+        />
+        <InputCard
+          error={error}
+          user={userContact}
+          onChangeHandler={onChangeHandler}
+          onBlurHandler={onBlurHandler}
+          inputName={INPUT_CONTACT}
+          inputPlaceholder={INPUT_CONTACT_PLACEHOLDER}
+        />
       </form>
     </div>
   );
-};
-
-const errorMsg = {
-  color: "hsl(354, 84%, 57%)",
 };
 
 export default Info;

@@ -1,6 +1,6 @@
 import React from "react";
 
-import thankyou from "../images/icon-thank-you.svg";
+import thankyou from "../../images/icon-thank-you.svg";
 
 const endMessage = () => {
   return (

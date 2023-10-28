@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 
 import "./App.css";
 
-import Sidebar from "./components/sidebar";
-import Info from "./components/info";
-import Navbar from "./components/navbar";
-import Button from "./components/button";
-import Plan from "./components/plan";
-import Mobilebtn from "./components/mobilebtn";
-import Addons from "./components/addons";
-import Summary from "./components/summary";
-import EndMessage from "./components/endMessage";
+import Sidebar from "./components/Navigation/sidebar";
+import Info from "./components/Info/info";
+import Navbar from "./components/Navigation/navbar";
+import Button from "./components/Buttons/button";
+import Plan from "./components/Plans/plan";
+import Mobilebtn from "./components/Buttons/mobilebtn";
+import Addons from "./components/Addons/addons";
+import Summary from "./components/Summary/summary";
+import EndMessage from "./components/Summary/endMessage";
 
 const App = () => {
   const [page, setPage] = useState(1);
