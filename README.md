@@ -13,8 +13,6 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -46,14 +44,10 @@ Users should be able to:
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
 ### Useful resources
 
 - [w3schools.com](https://www.w3schools.com/css/default.asp) - Everything you need to know for css
 - [css-tricks.com](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - Great flexbox guide
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
