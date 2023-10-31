@@ -89,7 +89,12 @@ const App = () => {
         setErrorType("email");
       } else if (userInfo.contact === "") {
         setErrorType("contact");
-      } else {
+      }
+      if (
+        userInfo.name !== "" ||
+        userInfo.email !== "" ||
+        userInfo.contact !== ""
+      ) {
         setPage(page + 1);
       }
     }

@@ -81,12 +81,27 @@ const Info = ({ onInfoChange, userInfo, noInputSubmit }) => {
 
   useEffect(() => {
     onInfoChange(userName, userEmail, userContact);
-
-    setError({
-      type: noInputSubmit,
-      class: "input-invalid",
-      msg: "This field is required",
-    });
+    if (noInputSubmit !== "") {
+      if (noInputSubmit === "name" && userName === "") {
+        setError({
+          type: noInputSubmit,
+          class: "input-invalid",
+          msg: "This field is required",
+        });
+      } else if (noInputSubmit === "email" && userEmail === "") {
+        setError({
+          type: noInputSubmit,
+          class: "input-invalid",
+          msg: "This field is required",
+        });
+      } else if (noInputSubmit === "contact" && userContact === "") {
+        setError({
+          type: noInputSubmit,
+          class: "input-invalid",
+          msg: "This field is required",
+        });
+      }
+    }
     // eslint-disable-next-line
   }, [userName, userEmail, userContact, noInputSubmit]);
 
