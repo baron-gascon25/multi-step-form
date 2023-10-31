@@ -24,6 +24,7 @@ const App = () => {
   const [billing, setBilling] = useState("Monthly");
   const [adons, setAdons] = useState([]);
   const [summary, setSummary] = useState({ billing: "", plan: "", adons: "" });
+  const [errorType, setErrorType] = useState("");
 
   useEffect(() => {
     if (page === 1) {
@@ -32,6 +33,7 @@ const App = () => {
           className='row-1'
           onInfoChange={onInfoChangeHandler}
           userInfo={userInfo}
+          noInputSubmit={errorType}
         />
       );
     } else if (page === 2) {
@@ -76,18 +78,20 @@ const App = () => {
     summary.billing,
     summary.adons,
     summary.plan,
+    errorType,
   ]);
 
   const onClickNextHandler = () => {
     if (page === 1) {
-      if (
-        userInfo.name === "" ||
-        userInfo.email === "" ||
-        userInfo.contact === ""
-      ) {
-        return page;
+      if (userInfo.name === "") {
+        setErrorType("name");
+      } else if (userInfo.email === "") {
+        setErrorType("email");
+      } else if (userInfo.contact === "") {
+        setErrorType("contact");
+      } else {
+        setPage(page + 1);
       }
-      setPage(page + 1);
     }
     if (page === 2) {
       if (plan === "") {

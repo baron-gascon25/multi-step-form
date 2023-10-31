@@ -10,11 +10,15 @@ const INPUT_EMAIL_PLACEHOLDER = "e.g. stephenking@lorem.com";
 const INPUT_CONTACT = "Contact";
 const INPUT_CONTACT_PLACEHOLDER = "e.g. +1 234 567 890";
 
-const Info = ({ onInfoChange, userInfo }) => {
+const Info = ({ onInfoChange, userInfo, noInputSubmit }) => {
   const [userName, setUserName] = useState(userInfo.name);
   const [userEmail, setUserEmail] = useState(userInfo.email);
   const [userContact, setUserContact] = useState(userInfo.contact);
-  const [error, setError] = useState({ class: "", msg: "" });
+  const [error, setError] = useState({
+    type: "",
+    class: "",
+    msg: "",
+  });
 
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
@@ -77,8 +81,14 @@ const Info = ({ onInfoChange, userInfo }) => {
 
   useEffect(() => {
     onInfoChange(userName, userEmail, userContact);
+
+    setError({
+      type: noInputSubmit,
+      class: "input-invalid",
+      msg: "This field is required",
+    });
     // eslint-disable-next-line
-  }, [userName, userEmail, userContact]);
+  }, [userName, userEmail, userContact, noInputSubmit]);
 
   return (
     <div className='m-1 mt-2 info container-2'>

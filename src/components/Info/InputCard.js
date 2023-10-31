@@ -8,7 +8,7 @@ const InputCard = ({
   inputName,
   inputPlaceholder,
 }) => {
-  const name = inputName.charAt(0).toLowerCase() + inputName.slice(1);
+  const name = inputName.toLowerCase();
 
   return (
     <div className='d-flex-col'>

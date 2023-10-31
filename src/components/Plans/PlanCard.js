@@ -2,7 +2,7 @@ import React from "react";
 
 const PlanCard = ({
   billing,
-  arcadePlan,
+  getPlan,
   plan,
   onClickPlan,
   yearlySub,
@@ -14,12 +14,12 @@ const PlanCard = ({
     <div
       className={`me-1 ${
         billing === "Monthly" ? "card-monthly" : "card-yearly"
-      } ${arcadePlan()}`}
+      } ${getPlan()} ${planName === "Advanced" && "card-middle"}`}
       onClick={() =>
         plan !== planName ? onClickPlan(planName) : onClickPlan("")
       }
     >
-      <img src={planImg} alt='arcade' className='m-1' />
+      <img src={planImg} alt={planName} className='m-1' />
       <div className='card-text'>
         <h6 className='h-plan' style={hColor}>
           {planName}

@@ -69,7 +69,7 @@ const Plan = ({ onClickPlan, plan, onClickBilling, billing }) => {
       <div className='cards'>
         <PlanCard
           billing={billing}
-          arcadePlan={arcadePlan}
+          getPlan={arcadePlan}
           plan={plan}
           onClickPlan={onClickPlan}
           yearlySub={yearlySub}
@@ -79,7 +79,7 @@ const Plan = ({ onClickPlan, plan, onClickBilling, billing }) => {
         />
         <PlanCard
           billing={billing}
-          arcadePlan={advancedPlan}
+          getPlan={advancedPlan}
           plan={plan}
           onClickPlan={onClickPlan}
           yearlySub={yearlySub}
@@ -89,7 +89,7 @@ const Plan = ({ onClickPlan, plan, onClickBilling, billing }) => {
         />
         <PlanCard
           billing={billing}
-          arcadePlan={proPlan}
+          getPlan={proPlan}
           plan={plan}
           onClickPlan={onClickPlan}
           yearlySub={yearlySub}
